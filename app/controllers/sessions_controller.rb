@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
   		flash[:success] = "You have successfully signed in!"
   		sign_in @user
   		params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
-  		redirect_to @user
+  		redirect_to root_url
   	else
   		flash.now[:danger] = 'Invalid email and/or password'
   		render 'new'
