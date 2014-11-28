@@ -1,12 +1,17 @@
 <h1>Members Only Posts</h1>
 
+<div class="row">
 <% @posts.each do |post| %>
-	<h2><%= post.title %></h2>
-	<% if signed_in? %>
-		<p>By <%= post.user.name %></p>
-	<% end %>
-	<p><%= post.body %></p>
+	<div class="col-md-4">
+		<h2><%= post.title %></h2>
+		<% if signed_in? %>
+			<p>By <%= post.user.name %></p>
+		<% end %>
+		<p><%= truncate post.body, length: 220 %></p>
+		<p><%= link_to "View full post...", post %></p>
+	</div>
 <% end %>
+</div>
 
 <% if signed_in? %>
 	<%= link_to "Add a Post", new_post_path %> | <%= link_to "Sign Out", logout_path, method: "delete" %>

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :users
-  resources :posts, only: [:new, :create, :index]
+  resources :posts, only: [:new, :show, :create, :index]
 
   root 'posts#index'
 
